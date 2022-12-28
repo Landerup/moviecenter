@@ -1,12 +1,11 @@
 import React from "react";
 
-// Väljer vad jag vill hämta från film datan
+// Väljer vad jag vill hämta från film data, renderar film data här
 const MovieCard = ({ movie, img_url }) => {
   return (
-      <div>
+      <div className="m-2">
         <div>
-          <h5>{movie.title}</h5>
-          <img src={`${img_url}${movie.poster_path}`} alt="movie" />
+          <img src={`${img_url}${movie.poster_path}`} alt="movie"/>
         </div>
       </div>
   );
