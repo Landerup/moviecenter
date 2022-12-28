@@ -1,6 +1,21 @@
 body {
   background-color: #383737;
   color: #FBF6F6;
+  font-family: 'Joti One';
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: #5B5858;
+  display: flex;
+}
+
+footer {
+  background-color: #5B5858;
+  display: flex;
 }
 
 .movie-app > .row {
