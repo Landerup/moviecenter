@@ -1,5 +1,5 @@
 body {
-  background-color: #383737;
+  background-color: #090808;
   color: #FBF6F6;
   font-family: 'Joti One';
   text-decoration: none;
@@ -9,16 +9,45 @@ body {
 }
 
 header {
-  background-color: #5B5858;
+  background-color: #3A1313;
+  position: sticky;
   display: flex;
+  height: 8rem;
 }
 
-footer {
-  background-color: #5B5858;
-  display: flex;
+.searchBar {
+  background-color: #3A1313;
+  border: #3A1313;
+  color:#FBF6F6;
 }
 
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
+}
+
+.image-container{
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.image-container:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay{
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
 }
