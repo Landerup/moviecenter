@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
 import MovieHeader from "./components/MovieHeader";
-import MovieFavourite from "./components/MovieFavourites";
+import MovieFavourite from "./components/MovieFavourite";
 
 function App() {
   // lägger api urls i variablar
@@ -13,6 +13,7 @@ function App() {
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
+  // hämtar från MovieFavourites componenten och lägger på <MovieCard/> för att den ska hamna på kortet
   const favouriteMovie = MovieFavourite();
 
   // Lägger till api url samt api key i en fetch
@@ -28,7 +29,7 @@ function App() {
     fetchMovieApi(search);
   }, [search]);
 
-  // Funktion för att hämta data från MovieCard komponenten, vad jag vill lista ut
+  // Funktion för att hämta data från MovieCard komponenten, listar ut data som har med movieCard att göra
   const listMovies = () =>
     movies.map((movie) => (
       <MovieCard key={movie.id} movie={movie} img_url={IMG_URL} favouriteComponent={favouriteMovie}/>
@@ -73,7 +74,7 @@ function App() {
       <div className="text-center m-4">
         <h3>New Movies</h3>
       </div>
-      <div className="row justify-content-center">{listMovies()}</div>
+      <div className="row d-flex align-items-center justify-content-center">{listMovies()}</div>
     </div>
   );
 }

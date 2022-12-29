@@ -9,10 +9,8 @@ body {
 }
 
 header {
-  background-color: #3A1313;
-  position: sticky;
   display: flex;
-  height: 8rem;
+  background-color: #3A1313;
 }
 
 .searchBar {
@@ -21,14 +19,10 @@ header {
   color:#FBF6F6;
 }
 
-.movie-app > .row {
-  overflow-x: auto;
-  flex-wrap: nowrap;
-}
-
 .image-container{
   position: relative;
   transition: transform 0.2s;
+  max-width: 300px;
 }
 
 .image-container:hover{
@@ -43,7 +37,7 @@ header {
 .overlay{
   position: absolute;
   background: rgba(0, 0, 0, 0.6);
-  width: 100%;
+  width: 300px;
   transition: 0.5s ease;
   opacity: 0;
   bottom: 0;
