@@ -25,6 +25,7 @@ function App() {
   };
 
   // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas vid ny sökning
+  // När sökrutan är tom går den tillbaka till default
   useEffect(() => {
     fetchMovieApi(search);
   }, [search]);
@@ -69,7 +70,7 @@ function App() {
           <input
             className="form-control form-control-sm searchBar"
             type="search"
-            placeholder="Search here..."
+            placeholder="Search movie here..."
             value={search}
             onChange={seachHandler}
           />
