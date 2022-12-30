@@ -58,30 +58,34 @@ function App() {
 
   // Listar filmer på hemsidan med listMovies funktionen och söker med searchMovie och hanterar seachHandler
   return (
-    <div className="container-fluid">
+    <div>
       <header className="header">
         <div className="m-4">
           <TitleComponent title="Movie Center" />
         </div>
       </header>
-      <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
-        <input
-          className="form-control form-control-sm searchBar"
-          type="search"
-          placeholder="Search here..."
-          value={search}
-          onChange={seachHandler}
-        />
-      </form>
-      <div>
-        <div className="text-center m-4">
-            <TitleComponent title="New Movies" />
+      <div className="container-fluid">
+        <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
+          <input
+            className="form-control form-control-sm searchBar"
+            type="search"
+            placeholder="Search here..."
+            value={search}
+            onChange={seachHandler}
+          />
+        </form>
+        <div>
+          <div className="text-center m-4">
+            <TitleComponent title="Discover Movies" />
+          </div>
+          <div className="row d-flex justify-content-center">
+            {listMovies()}
+          </div>
         </div>
-        <div className="row d-flex justify-content-center">{listMovies()}</div>
-      </div>
-      <div>
-        <div className="text-center m-4">
+        <div>
+          <div className="text-center m-4">
             <TitleComponent title="Favourite Movies" />
+          </div>
         </div>
       </div>
       <footer className="footer">
