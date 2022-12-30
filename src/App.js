@@ -27,7 +27,7 @@ function App() {
   // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas vid ny sökning
   // När sökrutan är tom går den tillbaka till default
   useEffect(() => {
-    fetchMovieApi(search);
+    fetchMovieApi();
   }, [search]);
 
   // Funktion för att hämta data från MovieCard komponenten, listar ut data som har med movieCard att göra
