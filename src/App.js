@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
-import MovieHeader from "./components/MovieHeader";
+import TitleComponent from "./components/TitleComponent";
 import MovieFavourite from "./components/MovieFavourite";
-import TrendingMovie from "./components/TrendingMovie";
+import MovieFooter from "./components/MovieFooter";
 
 function App() {
   // lägger api urls i variablar
@@ -13,7 +13,6 @@ function App() {
   const API_SEARCH = "https://api.themoviedb.org/3/search/movie";
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const [movies, setMovies] = useState([]);
-  const [trendMovies, settrendMovies] = useState([]);
   const [search, setSearch] = useState("");
   const favouriteMovie = MovieFavourite();
 
@@ -25,20 +24,9 @@ function App() {
     setMovies(apiDataJson.results);
   };
 
-  // Ny fetch, samma som ovan men ny url med weekly trending movies
-  const trendMovieApi = async () => {
-    const apiTrendData = await fetch(
-      `${API_URL}/trending/movie/week?api_key=${API_KEY}`
-    );
-    const apiTrendDataJson = await apiTrendData.json();
-
-    settrendMovies(apiTrendDataJson.results);
-  };
-
   // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas vid ny sökning
   useEffect(() => {
     fetchMovieApi(search);
-    trendMovieApi(search);
   }, [search]);
 
   // Funktion för att hämta data från MovieCard komponenten, listar ut data som har med movieCard att göra
@@ -47,17 +35,6 @@ function App() {
       <MovieCard
         key={movie.id}
         movie={movie}
-        img_url={IMG_URL}
-        favouriteComponent={favouriteMovie}
-      />
-    ));
-
-  // samma som ovan men med ny komponent och ny api url med weekly trending movies
-  const trendingMovies = () =>
-    trendMovies.map((trendMovie) => (
-      <TrendingMovie
-        key={trendMovie.id}
-        trendMovie={trendMovie}
         img_url={IMG_URL}
         favouriteComponent={favouriteMovie}
       />
@@ -83,8 +60,8 @@ function App() {
   return (
     <div className="container-fluid">
       <header className="header">
-        <div className="text-center m-4">
-          <MovieHeader header="Movie Center" />
+        <div className="m-4">
+          <TitleComponent title="Movie Center" />
         </div>
       </header>
       <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
@@ -98,23 +75,18 @@ function App() {
       </form>
       <div>
         <div className="text-center m-4">
-          <h3>New Movies</h3>
+            <TitleComponent title="New Movies" />
         </div>
-        <div className="row d-flex justify-content-center">
-          {listMovies()}
-        </div>
+        <div className="row d-flex justify-content-center">{listMovies()}</div>
       </div>
       <div>
         <div className="text-center m-4">
-          <h3>Trending Movies</h3>
-        </div>
-        <div className="trend-movie">
-          <div className="row">{trendingMovies()}</div>
+            <TitleComponent title="Favourite Movies" />
         </div>
       </div>
       <footer className="footer">
-        <div className="text-center m-4">
-          <MovieHeader header="Movie Center" />
+        <div className="m-4">
+          <MovieFooter />
         </div>
       </footer>
     </div>

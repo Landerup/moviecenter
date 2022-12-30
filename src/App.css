@@ -8,13 +8,12 @@ body {
   margin: 0;
 }
 
-header {
+.header {
   display: flex;
-  justify-content: center;
   background-color: #3A1313;
 }
 
-footer {
+.footer {
   display: flex;
   justify-content: center;
   background-color: #3A1313;
@@ -52,9 +51,4 @@ footer {
   font-size: 20px;
   padding: 20px;
   text-align: center;
-}
-
-.trend-movie > .row {
-  overflow-x: auto;
-  flex-wrap: nowrap;
 }
