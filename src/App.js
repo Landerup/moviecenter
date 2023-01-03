@@ -5,6 +5,7 @@ import MovieCard from "./components/MovieCard";
 import TitleComponent from "./components/TitleComponent";
 import MovieFavourite from "./components/MovieFavourite";
 import MovieFooter from "./components/MovieFooter";
+import MovieNavbar from "./components/MovieNavbar";
 
 function App() {
   // lägger api urls i variablar
@@ -64,6 +65,9 @@ function App() {
       <header className="header">
         <div className="m-4">
           <TitleComponent title="Movie Center" />
+        </div>
+        <div className="m-4">
+          <MovieNavbar />
         </div>
       </header>
       <div className="container-fluid">
