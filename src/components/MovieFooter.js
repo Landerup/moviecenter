@@ -1,5 +1,6 @@
 import React from "react";
 
+// Social media iconer som ligger i footer
 const MovieFooter = () => {
   return (
     <div className="m-2">

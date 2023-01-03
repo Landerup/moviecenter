@@ -30,7 +30,7 @@ function App() {
     fetchMovieApi();
   }, [search]);
 
-  // Funktion för att hämta data från MovieCard komponenten, listar ut data som har med movieCard att göra
+  // Funktion och loop för att hämta data från MovieCard komponenten och api, listar ut data som har med movieCard att göra
   const listMovies = () =>
     movies.map((movie) => (
       <MovieCard
@@ -41,7 +41,7 @@ function App() {
       />
     ));
 
-  // lägger in sök url och fetchar den
+  // Fetchar sök url
   const searchMovie = async (event) => {
     event.preventDefault();
     try {
@@ -58,6 +58,7 @@ function App() {
   };
 
   // Listar filmer på hemsidan med listMovies funktionen och söker med searchMovie och hanterar seachHandler
+  // global titel komponent för att enkelt ändra titlar på sidan
   return (
     <div>
       <header className="header">

@@ -1,5 +1,6 @@
 import React from "react";
 
+// För att enkelt ändra titlar i App.js
 const TitleComponent = (props) => {
   return (
     <div className="col">

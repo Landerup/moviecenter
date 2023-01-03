@@ -1,5 +1,6 @@
 import React from "react";
 
+// "add to favourites" popup som kommer på movieCard komponenten
 const MovieFavourite = () => {
   return (
     <>
