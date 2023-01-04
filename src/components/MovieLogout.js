@@ -7,7 +7,7 @@ const MovieLogout = () => {
 
   return (
     <div>
-      <button onClick={() => logout()}>Logout</button>
+      <button type="button" className="btn btn-outline-light" onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>
     </div>
   );
 };

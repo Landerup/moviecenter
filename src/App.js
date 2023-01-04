@@ -8,7 +8,7 @@ import MovieFooter from "./components/MovieFooter";
 import MovieNavbar from "./components/MovieNavbar";
 
 function App() {
-  // lägger api urls i variablar
+  // lägger api urls i variablar för att enklare kunna använda de
   const API_URL = "https://api.themoviedb.org/3";
   const IMG_URL = "https://image.tmdb.org/t/p/w300";
   const API_SEARCH = "https://api.themoviedb.org/3/search/movie";
@@ -25,13 +25,12 @@ function App() {
     setMovies(apiDataJson.results);
   };
 
-  // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas vid ny sökning
-  // När sökrutan är tom går den tillbaka till default
+  // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas en gång vid ny sökning
   useEffect(() => {
     fetchMovieApi();
-  }, [search]);
+  }, []);
 
-  // Funktion och loop för att hämta data från MovieCard komponenten och api, listar ut data som har med movieCard att göra
+  // Funktion och loop för att hämta vald data från MovieCard komponenten och api, listar ut data som har med movieCard att göra
   const listMovies = () =>
     movies.map((movie) => (
       <MovieCard
@@ -43,8 +42,13 @@ function App() {
     ));
 
   // Fetchar sök url
+  // if-sats för att inte hämta apiet varje gång man skriver en bokstav o sökrutan
+  // När sökrutan är tom går den tillbaka till default
   const searchMovie = async (event) => {
     event.preventDefault();
+    if(!search){
+      fetchMovieApi()
+    }else{
     try {
       const search_url = `${API_SEARCH}?api_key=${API_KEY}&query=${search}`;
       const searchData = await fetch(search_url);
@@ -52,9 +56,9 @@ function App() {
 
       setMovies(searchDataJson.results);
     } catch (event) {}
-  };
+  }};
 
-  const seachHandler = (event) => {
+  const searchHandler = (event) => {
     setSearch(event.target.value);
   };
 
@@ -77,7 +81,7 @@ function App() {
             type="search"
             placeholder="Search movie here..."
             value={search}
-            onChange={seachHandler}
+            onChange={searchHandler}
           />
         </form>
         <div>

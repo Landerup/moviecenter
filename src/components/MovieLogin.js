@@ -7,7 +7,7 @@ const MovieLogin = () => {
 
   return (
     <div>
-      <button onClick={() => loginWithPopup()}>Login</button>
+      <button type="button" className="btn btn-outline-light" onClick={() => loginWithPopup()}>Login</button>
     </div>
   );
 };
