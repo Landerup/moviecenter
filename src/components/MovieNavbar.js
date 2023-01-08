@@ -6,20 +6,19 @@ import MovieUserProfile from "./MovieUserProfile";
 
 // if-sats för att kolla om man är inloggad eller inte, för att visa login eller logout knapp
 const MovieNavbar = () => {
+  // navItems i array för att enklare lägga till nya, gör en map och hämtar ut de
   const { isAuthenticated } = useAuth0();
+  const navItems = ["Action", "Drama", "Comedy"];
 
   return (
     <nav className="navbar navbar-expand-xl position-absolute start-50">
       <ul className="navbar-nav gap-5">
-        <li to="/action" className="navitem fs-5">
-          Action
-        </li>
-        <li to="/drama" className="navitem fs-5">
-          Drama
-        </li>
-        <li to="/comedy" className="navitem fs-5">
-          Comedy
-        </li>
+        { navItems.map((item) => {
+          return(
+            <li className="navitem fs-5"><a href={item} name={item}>{item}</a></li>
+          )
+          })
+        }
         <li to="/profile" className="fs-5">
           <MovieUserProfile />
         </li>

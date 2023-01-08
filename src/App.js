@@ -6,6 +6,7 @@ import TitleComponent from "./components/TitleComponent";
 import MovieFavourite from "./components/MovieFavourite";
 import MovieFooter from "./components/MovieFooter";
 import MovieNavbar from "./components/MovieNavbar";
+import { getDefaultNormalizer } from "@testing-library/react";
 
 function App() {
   // lägger api urls i variablar för att enklare kunna använda de
@@ -15,6 +16,7 @@ function App() {
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
+  const [urlSet, setUrl] = useState();
   const favouriteMovie = MovieFavourite();
 
   // Lägger till api url samt api key i en fetch
@@ -23,6 +25,7 @@ function App() {
     const apiDataJson = await apiData.json();
 
     setMovies(apiDataJson.results);
+    console.log(apiDataJson.results)
   };
 
   // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas en gång vid ny sökning
@@ -62,6 +65,15 @@ function App() {
     setSearch(event.target.value);
   };
 
+  const getData = (movieType) => {
+    if(movieType == "Action"){
+      return(`${API_URL}/action/movie/list?api_key=${API_KEY}`)
+    }
+
+    setUrl(movieType)
+    console.log(movieType)
+  }
+
   // Listar filmer på hemsidan med listMovies funktionen och söker med searchMovie och hanterar seachHandler
   // global titel komponent för att enkelt ändra titlar på sidan
   return (
@@ -71,7 +83,7 @@ function App() {
           <TitleComponent title="Movie Center" />
         </div>
         <div className="m-4">
-          <MovieNavbar />
+          <MovieNavbar onClick={(event) => {getData(event.target.name)}}/>
         </div>
       </header>
       <div className="container-fluid">
