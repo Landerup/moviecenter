@@ -6,6 +6,10 @@ import TitleComponent from "./components/TitleComponent";
 import MovieFavourite from "./components/MovieFavourite";
 import MovieFooter from "./components/MovieFooter";
 import MovieNavbar from "./components/MovieNavbar";
+import { Routes, Route, Link } from "react-router-dom";
+import PopularMovies from "./pages/PopularMovies";
+import NewMovies from "./pages/NewMovies";
+import Home from "./pages/Home";
 
 function App() {
   // lägger api urls i variablar för att enklare kunna använda de
@@ -23,7 +27,6 @@ function App() {
     const apiDataJson = await apiData.json();
 
     setMovies(apiDataJson.results);
-    console.log(apiDataJson.results)
   };
 
   // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas en gång vid ny sökning
@@ -59,6 +62,22 @@ function App() {
     } catch (event) {}
   }};
 
+  const popularMovie = async () => {
+    const popular_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=vote_average.desc`;
+    const popularData = await fetch(popular_url);
+    const popularDataJson = await popularData.json();
+
+    setMovies(popularDataJson.results);
+  }
+
+  const newMovie = async () => {
+    const new_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=primary_release_date.desc`;
+    const newData = await fetch(new_url);
+    const newDataJson = await newData.json();
+
+    setMovies(newDataJson.results);
+  }
+
   const searchHandler = (event) => {
     setSearch(event.target.value);
   };
@@ -69,13 +88,12 @@ function App() {
     <div>
       <header className="header">
         <div className="m-4">
-          <TitleComponent title="Movie Center" />
+          <Link to="/" className="text-decoration-none text-white"> <TitleComponent title="Movie Center" /> </Link>
         </div>
-        <div className="m-4">
-          <MovieNavbar />
-        </div>
+        <MovieNavbar />
       </header>
       <div className="container-fluid">
+
         <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
           <input
             className="form-control form-control-sm searchBar"
@@ -85,18 +103,12 @@ function App() {
             onChange={searchHandler}
           />
         </form>
-        <div>
-          <div className="text-center m-4">
-            <TitleComponent title="Discover Movies" />
-          </div>
-          <div className="row d-flex justify-content-center">
-            {listMovies()}
-          </div>
-        </div>
-        <div>
-          <div className="text-center m-4">
-            <TitleComponent title="Favourite Movies" />
-          </div>
+        <div className="m-4">
+          <Routes>
+            <Route path="/" element={<Home listMovies={listMovies}/>}></Route>
+            <Route path="/popular" element={< PopularMovies popularMovie={popularMovie} img_url={IMG_URL} movies={movies} />}></Route>
+            <Route path="/new" element={<NewMovies newMovie={newMovie} img_url={IMG_URL} movies={movies} />}></Route>
+          </Routes>
         </div>
       </div>
       <footer className="footer">

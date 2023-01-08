@@ -14,13 +14,14 @@ const MovieNavbar = () => {
     <nav className="navbar navbar-expand-xl position-absolute start-50">
       <ul className="navbar-nav gap-5">
         <li className="navitem fs-5">
-          <Link to="/action" className="text-decoration-none text-white">Action</Link>
+          <Link to="/new" className="text-decoration-none text-white">
+            New Movies
+          </Link>
         </li>
         <li className="navitem fs-5">
-          <Link to="/drama" className="text-decoration-none text-white">Drama</Link>
-        </li>
-        <li className="navitem fs-5">
-          <Link to="/comedy" className="text-decoration-none text-white">Comedy</Link>
+          <Link to="/popular" className="text-decoration-none text-white">
+            Popular Movies
+          </Link>
         </li>
         <li className="fs-5">
           <Link to="/profile" className="text-decoration-none text-white">
