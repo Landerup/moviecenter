@@ -18,9 +18,7 @@ const NewMovies = ({ newMovie, movies, img_url }) => {
       <div className="text-center m-4">
         <TitleComponent title="New Movies" />
       </div>
-      <div className="row d-flex justify-content-center">
-        {listNewMovies()}
-      </div>
+      <div className="row d-flex justify-content-center">{listNewMovies()}</div>
     </>
   );
 };

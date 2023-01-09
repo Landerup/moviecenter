@@ -11,7 +11,7 @@ const MovieNavbar = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <nav className="navbar navbar-expand-xl position-absolute start-50">
+    <nav className="navbar navbar-expand-xl position-absolute start-50 m-4">
       <ul className="navbar-nav gap-5">
         <li className="navitem fs-5">
           <Link to="/new" className="text-decoration-none text-white">

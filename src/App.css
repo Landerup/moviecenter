@@ -52,3 +52,12 @@ body {
   padding: 20px;
   text-align: center;
 }
+
+.overlay-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 12; /* number of lines to show */
+          line-clamp: 12;
+  -webkit-box-orient: vertical;
+}

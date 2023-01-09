@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MovieCard from "./components/MovieCard";
 import TitleComponent from "./components/TitleComponent";
-import MovieFavourite from "./components/MovieFavourite";
 import MovieFooter from "./components/MovieFooter";
 import MovieNavbar from "./components/MovieNavbar";
 import { Routes, Route, Link } from "react-router-dom";
@@ -19,7 +17,6 @@ function App() {
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
-  const favouriteMovie = MovieFavourite();
 
   // Lägger till api url samt api key i en fetch
   const fetchMovieApi = async () => {
@@ -29,21 +26,23 @@ function App() {
     setMovies(apiDataJson.results);
   };
 
-  // kallar på fetch funktionen, kallas bara när sidan laddas om, api hämtas en gång vid ny sökning
-  useEffect(() => {
-    fetchMovieApi();
-  }, []);
+  // fetch för popular movies
+  const popularMovie = async () => {
+    const popular_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=vote_average.desc`;
+    const popularData = await fetch(popular_url);
+    const popularDataJson = await popularData.json();
 
-  // Funktion och loop för att hämta vald data från MovieCard komponenten och api, listar ut data som har med movieCard att göra
-  const listMovies = () =>
-    movies.map((movie) => (
-      <MovieCard
-        key={movie.id}
-        movie={movie}
-        img_url={IMG_URL}
-        favouriteComponent={favouriteMovie}
-      />
-    ));
+    setMovies(popularDataJson.results);
+  }
+
+  // fetch för new movies
+  const newMovie = async () => {
+    const new_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=release_date.desc`;
+    const newData = await fetch(new_url);
+    const newDataJson = await newData.json();
+
+    setMovies(newDataJson.results);
+  }
 
   // Fetchar sök url
   // if-sats för att inte hämta apiet varje gång man skriver en bokstav o sökrutan
@@ -62,22 +61,6 @@ function App() {
     } catch (event) {}
   }};
 
-  const popularMovie = async () => {
-    const popular_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=vote_average.desc`;
-    const popularData = await fetch(popular_url);
-    const popularDataJson = await popularData.json();
-
-    setMovies(popularDataJson.results);
-  }
-
-  const newMovie = async () => {
-    const new_url = `${API_URL}/discover/movie?api_key=${API_KEY}&sort_by=primary_release_date.desc`;
-    const newData = await fetch(new_url);
-    const newDataJson = await newData.json();
-
-    setMovies(newDataJson.results);
-  }
-
   const searchHandler = (event) => {
     setSearch(event.target.value);
   };
@@ -93,7 +76,6 @@ function App() {
         <MovieNavbar />
       </header>
       <div className="container-fluid">
-
         <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
           <input
             className="form-control form-control-sm searchBar"
@@ -105,9 +87,10 @@ function App() {
         </form>
         <div className="m-4">
           <Routes>
-            <Route path="/" element={<Home listMovies={listMovies}/>}></Route>
-            <Route path="/popular" element={< PopularMovies popularMovie={popularMovie} img_url={IMG_URL} movies={movies} />}></Route>
-            <Route path="/new" element={<NewMovies newMovie={newMovie} img_url={IMG_URL} movies={movies} />}></Route>
+            <Route path="/" element={<Home fetchMovieApi={fetchMovieApi} img_url={IMG_URL} movies={movies}/> }></Route>
+            <Route path="/popular" element={< PopularMovies popularMovie={popularMovie} img_url={IMG_URL} movies={movies}/>}></Route>
+            <Route path="/new" element={<NewMovies newMovie={newMovie} img_url={IMG_URL} movies={movies}/>}></Route>
+            <Route path="/profile"></Route>
           </Routes>
         </div>
       </div>

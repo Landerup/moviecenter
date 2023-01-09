@@ -1,11 +1,16 @@
 import TitleComponent from "../components/TitleComponent";
 import { useEffect } from "react";
+import MovieCard from "../components/MovieCard";
 
-const Home = ({ listMovies }) => {
+const Home = ({ movies, img_url, fetchMovieApi }) => {
+  useEffect(() => {
+    fetchMovieApi();
+  }, []);
 
-    useEffect(() => {
-        listMovies();
-      }, []);
+  const listMovies = () =>
+    movies.map((movie) => (
+      <MovieCard key={movie.id} movie={movie} img_url={img_url} />
+    ));
 
   return (
     <>

@@ -18,9 +18,7 @@ const PopularMovies = ({ popularMovie, movies, img_url }) => {
       <div className="text-center m-4">
         <TitleComponent title="Popular Movies" />
       </div>
-      <div className="row d-flex justify-content-center">
-        {listPopularMovies()}
-      </div>
+      <div className="row d-flex justify-content-center">{listPopularMovies()}</div>
     </>
   );
 };
