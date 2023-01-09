@@ -1,4 +1,3 @@
-import React from "react";
 import TitleComponent from "../components/TitleComponent";
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";

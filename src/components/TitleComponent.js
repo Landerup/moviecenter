@@ -1,4 +1,3 @@
-import React from "react";
 
 // För att enkelt ändra titlar globalt i appen
 const TitleComponent = (props) => {

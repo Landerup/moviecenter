@@ -1,4 +1,3 @@
-import React from "react";
 
 // Väljer vad jag vill hämta från film data, renderar film data här
 const MovieCard = ({ movie, img_url }) => {

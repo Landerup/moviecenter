@@ -1,4 +1,3 @@
-import React from "react";
 
 // Social media iconer som ligger i footer, inga kopplade länkar
 const MovieFooter = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 // Visar namnet om man är inloggad annars bara profile, samt en loading text
