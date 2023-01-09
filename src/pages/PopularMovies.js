@@ -3,6 +3,7 @@ import TitleComponent from "../components/TitleComponent";
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 
+// Listar ut filmer i Popular Movies, api data genom hooken som kommer från app.js
 const PopularMovies = ({ popularMovie, movies, img_url }) => {
   useEffect(() => {
     popularMovie();

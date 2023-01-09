@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 // if-sats för att kolla om man är inloggad eller inte, för att visa login eller logout knapp
 const MovieNavbar = () => {
-  // navItems i array för att enklare lägga till nya, gör en map och hämtar ut de
   const { isAuthenticated } = useAuth0();
 
   return (

@@ -2,6 +2,7 @@ import TitleComponent from "../components/TitleComponent";
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 
+// filmer som listas ut på homepagen
 const Home = ({ movies, img_url, fetchMovieApi }) => {
   useEffect(() => {
     fetchMovieApi();

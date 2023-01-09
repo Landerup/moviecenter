@@ -3,6 +3,7 @@ import TitleComponent from "../components/TitleComponent";
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 
+// listar ut filmer i fliken New Movies, api data genom hooken som kommer från app.js
 const NewMovies = ({ newMovie, movies, img_url }) => {
   useEffect(() => {
     newMovie();

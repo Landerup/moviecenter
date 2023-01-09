@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-// profilsida som visar namnet om man är inloggad annars bara profile, samt en loading text
+// Visar namnet om man är inloggad annars bara profile, samt en loading text
 const MovieUserProfile = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
 

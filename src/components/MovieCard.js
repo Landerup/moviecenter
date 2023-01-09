@@ -4,7 +4,7 @@ import React from "react";
 const MovieCard = ({ movie, img_url }) => {
   return (
     // kollar om filmen har en poster isåfall ska den visas annars inte
-    // hämtar in favouriteComponent för att lägga på filmkortet samt rating
+    // hämtar info text om filmer, om det inte finns hämtas rating på kortet
     <div className="image-container col col-3 m-4 w-auto">
       {movie.poster_path ? (
         <img src={`${img_url}${movie.poster_path}`} alt="movie" />
