@@ -8,6 +8,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import PopularMovies from "./pages/PopularMovies";
 import NewMovies from "./pages/NewMovies";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   // lägger api urls i variablar för att enklare kunna använda de
@@ -90,7 +91,7 @@ function App() {
             <Route path="/" element={<Home fetchMovieApi={fetchMovieApi} img_url={IMG_URL} movies={movies}/> }></Route>
             <Route path="/popular" element={< PopularMovies popularMovie={popularMovie} img_url={IMG_URL} movies={movies}/>}></Route>
             <Route path="/new" element={<NewMovies newMovie={newMovie} img_url={IMG_URL} movies={movies}/>}></Route>
-            <Route path="/profile"></Route>
+            <Route path="/profile" element={<Profile />}></Route>
           </Routes>
         </div>
       </div>
