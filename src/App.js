@@ -86,7 +86,7 @@ function App() {
             onChange={searchHandler}
           />
         </form>
-        <div className="m-4">
+        <div>
           <Routes>
             <Route path="/" element={<Home fetchMovieApi={fetchMovieApi} img_url={IMG_URL} movies={movies}/> }></Route>
             <Route path="/popular" element={< PopularMovies popularMovie={popularMovie} img_url={IMG_URL} movies={movies}/>}></Route>

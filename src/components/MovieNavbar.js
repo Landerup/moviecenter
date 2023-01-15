@@ -14,7 +14,7 @@ const MovieNavbar = () => {
 
   return (
     <>
-      <Navbar expand="md" variant="dark" className="m-2">
+      <Navbar expand="lg" variant="dark" className="m-2">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
