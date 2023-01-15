@@ -6,6 +6,7 @@ import MovieCard from "../components/MovieCard";
 const Home = ({ movies, img_url, fetchMovieApi }) => {
   useEffect(() => {
     fetchMovieApi();
+    // eslint-disable-next-line
   }, []);
 
   const listMovies = () =>

@@ -6,6 +6,7 @@ import MovieCard from "../components/MovieCard";
 const PopularMovies = ({ popularMovie, movies, img_url }) => {
   useEffect(() => {
     popularMovie();
+    // eslint-disable-next-line
   }, []);
 
   const listPopularMovies = () =>

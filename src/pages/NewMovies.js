@@ -6,6 +6,7 @@ import MovieCard from "../components/MovieCard";
 const NewMovies = ({ newMovie, movies, img_url }) => {
   useEffect(() => {
     newMovie();
+    // eslint-disable-next-line
   }, []);
 
   const listNewMovies = () =>
