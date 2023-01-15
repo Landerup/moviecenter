@@ -8,7 +8,7 @@ const Profile = () => {
       {isAuthenticated ? (
         <TitleComponent title={user.name} />
       ) : (
-        <TitleComponent title="Profile" />
+        <TitleComponent title="You have to login" />
       )}
     </div>
   );
