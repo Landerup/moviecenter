@@ -1,3 +1,5 @@
+Detta projekt är en webbapp som hämtar ett film api från The movie DB. På sidan kan man navigera i navbaren och få fram både nya och populära filmer, startsidan visar utforska filmer. Man kan även söka bland filmer och logga in på sidan, det finns en profilsida men i nuläget visar den endast ditt namn om du är inloggad.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

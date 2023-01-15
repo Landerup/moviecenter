@@ -95,7 +95,7 @@ function App() {
           </Routes>
         </div>
       </div>
-      <footer className="footer">
+      <footer className="footer float-bottom">
         <div className="m-4">
           <MovieFooter />
         </div>
