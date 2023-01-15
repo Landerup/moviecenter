@@ -77,7 +77,7 @@ function App() {
         <MovieNavbar />
       </header>
       <div className="container-fluid">
-        <form className="col-sm-4 mt-4" onSubmit={searchMovie}>
+        <form className="col-sm-4 mt-4 mx-auto" onSubmit={searchMovie}>
           <input
             className="form-control form-control-sm searchBar"
             type="search"

@@ -2,34 +2,37 @@ import { useAuth0 } from "@auth0/auth0-react";
 import MovieLogin from "./MovieLogin";
 import MovieLogout from "./MovieLogout";
 import MovieUserProfile from "./MovieUserProfile";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 // if-sats för att kolla om man är inloggad eller inte, för att visa login eller logout knapp
+// använder react-bootstrap för enklare responsivitet och burger-menu
 const MovieNavbar = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <nav className="navbar navbar-expand-xl position-absolute start-50 m-4">
-      <ul className="navbar-nav gap-5">
-        <li className="navitem fs-5">
-          <Link to="/new" className="text-decoration-none text-white">
-            New Movies
-          </Link>
-        </li>
-        <li className="navitem fs-5">
-          <Link to="/popular" className="text-decoration-none text-white">
-            Popular Movies
-          </Link>
-        </li>
-        <li className="fs-5">
-          <Link to="/profile" className="text-decoration-none text-white">
-            {" "}
-            <MovieUserProfile />{" "}
-          </Link>
-        </li>
-        {isAuthenticated ? <MovieLogout /> : <MovieLogin />}
-      </ul>
-    </nav>
+    <>
+      <Navbar expand="md" variant="dark">
+        <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto gap-4 m-4">
+              <Nav.Link className="text-white" href="/new">
+                New Movies
+              </Nav.Link>
+              <Nav.Link className="text-white" href="/popular">
+                Popular Movies
+              </Nav.Link>
+              <Nav.Link className="text-white" href="/profile">
+                <MovieUserProfile />
+              </Nav.Link>
+              {isAuthenticated ? <MovieLogout /> : <MovieLogin />}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 
