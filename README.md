@@ -1,5 +1,7 @@
 Detta projekt är en webbapp som hämtar ett film api från The movie DB. På sidan kan man navigera i navbaren och få fram både nya och populära filmer, startsidan visar utforska filmer. Man kan även söka bland filmer och logga in på sidan, det finns en profilsida men i nuläget visar den endast ditt namn om du är inloggad.
 
+Man kan besöka sidan via den här länken https://moviecenterexam.netlify.app/ , men det går dock inte att logga in där. För att kunna logga in får man hämta repot och sätta upp det lokalt på din egen dator.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
